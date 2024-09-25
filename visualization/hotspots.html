@@ -77,7 +77,7 @@ function create_name_string(d) {
     return name;
 }
 
-d3.json("hotspots_data.json", function(error, root) {
+d3.json("hotspots.json", function(error, root) {
   var focus = root,
       nodes = pack.nodes(root);
 

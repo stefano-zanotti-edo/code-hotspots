@@ -53,18 +53,15 @@ with open(args.output_file, mode='w', newline='') as file:
         # Write component data to the CSV file
         for component in components:
             language = "Java"
-            filename = component.get("path", "")
+            filename = "./" + component.get("path", "")
             blank = 0
             comment = 0
 
             # Check if the measures array is empty
             measures = component.get("measures", [])
-            if measures:
+            if measures and filename.endswith(".java"):
                 code = measures[0].get("value", 0)
-            else:
-                code = 0
-            
-            writer.writerow([language, filename, blank, comment, code])
+                writer.writerow([language, filename, blank, comment, code])
 
         # Increment the page number for the next API call
         params["p"] += 1
